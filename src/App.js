@@ -9,7 +9,7 @@ import Footer from './components/views/Footer/Footer';
 function App() {
   return (
     <main>
-      <Container>
+      <Container style={{width: "1000px"}}>
         <Header />
         <Container>
           <Routes>

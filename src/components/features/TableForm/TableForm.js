@@ -2,13 +2,11 @@ import styles from './TableForm.module.scss';
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { getTableId } from '../../../redux/tablesRedux';
 import { updateTable } from '../../../redux/tablesRedux';
-import { Form, Button, Container, Col, Row } from 'react-bootstrap';
-
-
+import { Form, Button, Container, Col} from 'react-bootstrap';
 
 const TableForm = () => {
   const { id }  = useParams();
@@ -19,10 +17,12 @@ const TableForm = () => {
   const [billValue, setBillValue] = useState(tableData.bill);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const update = () => {
-    dispatch(updateTable());
-  }
+    dispatch(updateTable({id, status, peopleAmount: parseInt(peopleAmount), maxPeopleAmount: parseInt(maxPeopleAmount), billValue: parseInt(billValue)}));
+    navigate('/');
+  };
 
   useEffect(() => {
     if(status === "Busy") {
