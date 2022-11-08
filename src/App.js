@@ -2,15 +2,15 @@ import { Container } from 'react-bootstrap';
 import Home from './components/pages/Home/Home';
 import TableInfo from './components/pages/TableInfo/TableInfo';
 import NotFound from './components/pages/NotFound/NotFound';
-import NavBar from './components/views/NavBar/NavBar';
+import Header from './components/views/Header/Header';
 import { Routes, Route } from 'react-router-dom';
-import Copyright from './components/views/Copyright/Copyright';
+import Footer from './components/views/Footer/Footer';
 
 function App() {
   return (
     <main>
       <Container>
-        <NavBar />
+        <Header />
         <Container>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -18,7 +18,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Container>
-        <Copyright />
+        <Footer />
       </Container>
     </main>
 
