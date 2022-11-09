@@ -4,13 +4,14 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { getTableId } from '../../../redux/tablesRedux';
-import { updateTable } from '../../../redux/tablesRedux';
+import { getTableId, updateTable } from '../../../redux/tablesRedux';
+import { getAllStatuses } from '../../../redux/statusesRedux';
 import { Form, Button, Container, Col} from 'react-bootstrap';
 
 const TableForm = () => {
   const { id }  = useParams();
   const tableData = useSelector(state => getTableId(state, parseInt(id)));
+  const statusOptions = useSelector(getAllStatuses);
   const [status, setStatus] = useState(tableData.status);
   const [peopleAmount, setPeopleAmount] = useState(tableData.peopleAmount);
   const [maxPeopleAmount, setMaxPeopleAmount] = useState(tableData.maxPeopleAmount);
@@ -62,12 +63,11 @@ const TableForm = () => {
       <Form className="row">
         <Form.Group className="d-inline-flex my-2 align-items-center">
           <Form.Label className="fw-bold pe-4">Status:</Form.Label>
-          <Form.Select onChange={e => setStatus(e.target.value)}>
-            <option>{tableData.status}</option>
-              <option value="1">Free</option>
-              <option value="2">Reserved</option>
-              <option value="3">Busy</option>
-              <option value="4">Cleaning</option>
+          <Form.Select value="status" className={styles.input_select} onChange={e => setStatus(e.target.value)}>
+            <option>{status}</option>
+            {statusOptions.map((statusOption) => (
+            status !== statusOption ? <option key={statusOption}>{statusOption}</option> : ''
+            ))}
           </Form.Select>
         </Form.Group>
         <Form.Group className="d-inline-flex my-2 align-items-center">
