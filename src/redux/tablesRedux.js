@@ -9,7 +9,7 @@ const createActionName = actionName => `app/tables/${actionName}`;
 const UPDATE_TABLE = createActionName('UPDATE_TABLE');
 
 // action creators
-export const updateTable = payload => ({ type: 'UPDATE_TABLE', payload });
+export const updateTable = payload => ({ type: UPDATE_TABLE, payload });
 
 export const fetchTables = () => {
   return(dispatch) => {
