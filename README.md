@@ -1,0 +1,1 @@
+[![Run on Repl.it](https://replit.com/badge/github/superdzoni/waiter-app)](https://replit.com/new/github/superdzoni/waiter-app)
