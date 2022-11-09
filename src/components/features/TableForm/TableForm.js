@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { getTableId, updateTable } from '../../../redux/tablesRedux';
+import { getTableId, updateTableValues } from '../../../redux/tablesRedux';
 import { getAllStatuses } from '../../../redux/statusesRedux';
 import { Form, Button, Container, Col} from 'react-bootstrap';
 
@@ -21,7 +21,7 @@ const TableForm = () => {
   const navigate = useNavigate();
 
   const update = () => {
-    dispatch(updateTable({id, status, peopleAmount: parseInt(peopleAmount), maxPeopleAmount: parseInt(maxPeopleAmount), billValue: parseInt(billValue)}));
+    dispatch(updateTableValues({id, status, peopleAmount: parseInt(peopleAmount), maxPeopleAmount: parseInt(maxPeopleAmount), billValue: parseInt(billValue)}));
     navigate('/');
   };
 
